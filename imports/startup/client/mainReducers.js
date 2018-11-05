@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'  
-import recipes from './recipes'
+import recipes from '../../reducers/recipes'
+
+import client from './apollo'
 
 const appReducer = combineReducers({  
-    recipes
+    recipes,
 });
 
 export default appReducer

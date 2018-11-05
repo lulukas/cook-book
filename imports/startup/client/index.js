@@ -2,15 +2,12 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from 'react-apollo'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-
-import appReducer from '../../ui/reducers'
-import App from '../../ui/App'
 
 import client from './apollo'
+import store from './store'
 
-const store = createStore(appReducer, applyMiddleware(thunk))
+import App from '../../ui/App'
+
 
 Meteor.startup(() => {
   render(
