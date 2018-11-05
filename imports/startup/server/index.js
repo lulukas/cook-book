@@ -1,4 +1,4 @@
-import recipes from '../../api/recipes'
+import recipes from '../../api/Recipes/recipes'
 
 import './apollo'
 

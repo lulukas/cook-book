@@ -2,25 +2,26 @@ import React from 'react'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 
-import Recipes from './Recipes'
+import Recipes from './pages/Recipes'
 
-const nameQuery = gql`
+const GET_TITLE = gql`
   query {
     appTitle
-    recipes {
-      _id
-      name
-    }
   }
 `
 
 const App = () => (
-  <Query query={nameQuery}>
+  <Query query={GET_TITLE}>
     {({ loading, error, data }) => {
       if (loading) return <div>Loading...</div>
       if (error) return <div>Error :(</div>
 
-      return <Recipes data={data}/>
+      return (
+        <div>
+          <h1>{data.appTitle}</h1>
+          <Recipes />
+        </div>
+      )
     }}
   </Query>
 )

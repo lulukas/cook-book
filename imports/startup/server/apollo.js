@@ -2,9 +2,11 @@ import { ApolloServer, gql } from 'apollo-server-express'
 import { WebApp } from 'meteor/webapp'
 import { getUser } from 'meteor/apollo'
 import { makeExecutableSchema } from 'graphql-tools'
+import merge from 'lodash/merge'
 
-import RecipeSchema from '../../api/Recipe/Recipe.graphql'
-
+import RecipeSchema from '../../api/Recipes/Recipe.graphql'
+import RecipesResolvers from '../../api/Recipes/resolvers'
+//hi there
 const testSchema = `
 type Query{
   appTitle: String
@@ -12,27 +14,17 @@ type Query{
 }
 `
 
-const typeDefs = [testSchema, RecipeSchema]
-
-const resolvers = {
+const resolver = {
   Query: {
     appTitle() {
-      return 'Recipes'
-    },
-    recipes() {
-      return [
-        {
-          _id: 'sdoifadnfllk',
-          name: 'Cordon Bleu',
-        },
-        {
-          _id: 'sdoifadasdflk',
-          name: 'Rehrücken an Pilzrahmsauce',
-        },
-      ]
+      return 'List of Recipe'
     },
   },
 }
+
+const typeDefs = [testSchema, RecipeSchema]
+
+const resolvers = merge(resolver, RecipesResolvers)
 
 const schema = makeExecutableSchema({
   typeDefs,

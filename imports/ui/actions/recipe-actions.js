@@ -1,4 +1,4 @@
-import Recipes from '../../api/recipes';
+import Recipes from '../../api/Recipes/recipes';
 
 function getRecipes() {  
   return async function(dispatch) {
