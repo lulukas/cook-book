@@ -71,5 +71,8 @@
   "eslintIgnore": [
     "lib/**/*.js",
     "imports/linked/**/*.js"
-  ]
+  ],
+  "devDependencies": {
+    "babel-plugin-inline-import": "^3.0.0"
+  }
 }

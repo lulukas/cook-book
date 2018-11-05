@@ -1,18 +1,35 @@
 import { ApolloServer, gql } from 'apollo-server-express'
 import { WebApp } from 'meteor/webapp'
 import { getUser } from 'meteor/apollo'
-import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools'
+import { makeExecutableSchema } from 'graphql-tools'
 
-const typeDefs = `
-type Query {
-  name: String
+import RecipeSchema from '../../api/Recipe/Recipe.graphql'
+
+const testSchema = `
+type Query{
+  appTitle: String
+  recipes: [Recipe]
 }
 `
 
+const typeDefs = [testSchema, RecipeSchema]
+
 const resolvers = {
   Query: {
-    name() {
-      return 'Lukas Emanuel Klier'
+    appTitle() {
+      return 'Recipes'
+    },
+    recipes() {
+      return [
+        {
+          _id: 'sdoifadnfllk',
+          name: 'Cordon Bleu',
+        },
+        {
+          _id: 'sdoifadasdflk',
+          name: 'Rehrücken an Pilzrahmsauce',
+        },
+      ]
     },
   },
 }

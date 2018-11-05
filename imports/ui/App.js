@@ -6,7 +6,11 @@ import Recipes from './Recipes'
 
 const nameQuery = gql`
   query {
-    name
+    appTitle
+    recipes {
+      _id
+      name
+    }
   }
 `
 
@@ -16,7 +20,7 @@ const App = () => (
       if (loading) return <div>Loading...</div>
       if (error) return <div>Error :(</div>
 
-      return <Recipes title={data.name}/>
+      return <Recipes data={data}/>
     }}
   </Query>
 )

@@ -22,14 +22,14 @@ class Recipes extends React.Component {
   }
 
   render() {
-    const { recipes, recipeActions, title } = this.props
+    const { recipes, recipeActions, data } = this.props
 
     return (
       <div>
-        <h1>{title}</h1>
+        <h1>{data.appTitle}</h1>
         <ul>
-          {recipes ? (
-            recipes.map(w => <li key={w._id}>{w.name}</li>)
+          {data.recipes ? (
+            data.recipes.map(w => <li key={w._id}>{w.name}</li>)
           ) : (
             <li>none</li>
           )}

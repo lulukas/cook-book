@@ -1,0 +1,8 @@
+# name
+# createdAt
+# [ingredientId]
+
+type Recipe {
+    _id: String!
+    name: String!
+}
